@@ -62,7 +62,8 @@ class coco(Dataset):
     def __getitem__(self, idx):
         a = self.anno['images'][idx]
         image_idx = a['id']
-        img_path = os.path.join(self._root_dir, self._data_name, self._image_path_from_index(image_idx))
+        #img_path = os.path.join(self._root_dir, self._data_name, self._image_path_from_index(image_idx))
+        img_path = self._image_path_from_index(image_idx)
         image = Image.open(img_path)
 
         width = a['width']

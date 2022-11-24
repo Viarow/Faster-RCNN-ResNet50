@@ -37,7 +37,7 @@ def evaluate(model, data_loader, device, mAP_list=None):
         metric_logger.update(model_time=model_time, evaluator_time=evaluator_time)
 
     # gather the stats from all processes
-    metric_logger.synchronize_between_processes()
+    # metric_logger.synchronize_between_processes()
     print("Averaged stats:", metric_logger)
     coco_evaluator.synchronize_between_processes()
 

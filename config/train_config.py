@@ -1,8 +1,9 @@
 
 
 class Config:
-    backbone = 'mobilenet'  # [vgg16, resnet-fpn, mobilenet, resnet50_fpn]
-    backbone_pretrained_weights = None  # [path or None]
+    backbone = 'resnet50_fpn'  # [vgg16, resnet-fpn, mobilenet, resnet50_fpn]
+    #backbone_pretrained_weights = './pretrained_weights/fasterrcnn_resnet50_fpn_coco-258fb6c6.pth'  # [path or None]
+    backbone_pretrained_weights = None
 
     # data transform parameter
     train_horizon_flip_prob = 0.0  # data horizon flip probility in train transform
@@ -12,7 +13,7 @@ class Config:
     image_std = [0.229, 0.224, 0.225]
 
     # anchor parameters
-    anchor_size = [64, 128, 256]
+    anchor_size = [32, 64, 128, 256, 512]
     anchor_ratio = [0.5, 1, 2.0]
 
     # roi align parameters
@@ -42,11 +43,11 @@ class Config:
     box_positive_fraction = 0.25
     bbox_reg_weights = None
 
-    device_name = 'cuda:7'
+    device_name = 'cuda'
 
     resume = ''  # pretrained_weights
     start_epoch = 0  # start epoch
-    num_epochs = 5000  # train epochs
+    num_epochs = 1  # train epochs
 
     # learning rate parameters
     lr = 5e-3
@@ -57,11 +58,11 @@ class Config:
     lr_gamma = 0.33
     lr_dec_step_size = 100
 
-    batch_size = 6
+    batch_size = 16
 
     num_class = 80 + 1  # foreground + 1 background
-    data_root_dir = " "
-    model_save_dir = " "
+    data_root_dir = "../COCODevKit/"
+    model_save_dir = "../od_checkpoints"
 
 
 cfg = Config()
